@@ -92,7 +92,7 @@ service<ws> flightTrack {
 		Flight f1 = {lat:(jsons:toString(lat)),lon:(jsons:toString(lon)),alti:(jsons:toString(alti)),spd:(jsons:toString(spd)),
 		spdKmh:spdKmh,from:(jsons:toString(from)),to:(jsons:toString(to)),aeroplaneType:(jsons:toString(aeroplaneType)),aeroplaneComp:(jsons:toString(aeroplaneComp)),originCountry:(jsons:toString(originCountry))};
 		
-		json data = {lat:lat,lon:lon,alti:alti,spd:spd,spdKmh:spdKmh,from:from,to:to,nowIn:countryData1,aeroplaneType:aeroplaneType,aeroplaneComp:aeroplaneComp,originCountry:originCountry};
+		json data = {lat0:lat,lon0:lon,lat:lat,lon:lon,alti:alti,spd:spd,spdKmh:spdKmh,from:from,to:to,nowIn:countryData1,aeroplaneType:aeroplaneType,aeroplaneComp:aeroplaneComp,originCountry:originCountry};
 		system:println(jsons:toString(data));
 		system:println("Latitude         >>"+jsons:toString(lat));
 		system:println("Longitude        >>"+jsons:toString(lon));
@@ -112,6 +112,7 @@ service<ws> flightTrack {
 		message dataMsg={};
 		messages:setJsonPayload(dataMsg,data);
 		string dataStr = jsons:toString(data);
+		string dataStr0 = dataStr;
 		ws:pushText(dataStr);
         }
     }
